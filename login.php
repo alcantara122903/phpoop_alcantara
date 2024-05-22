@@ -7,22 +7,19 @@ if (isset($_SESSION['username'])) {
   header('location:index.php');
 } 
  
+
 if (isset($_POST['login'])) {
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      $result = $con->check($username, $password);
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $result = $con->check($username, $password);
+
   if ($result) {
-      if ($result['username'] == $_POST['username'] && $result['password'] == $_POST['password']) {
-                    $_SESSION['username'] = $result['username'];
-                   
-                    header('location:index.php');
-      } else {
-              $error_message= "Incorrct username or password. Please try again";
-            }
-            } else {
-              $error_message="Error occured while loggin in. Please try again.";
-            }
-        }
+      $_SESSION['username'] = $result['username'];
+      header('location:index.php');
+  } else {
+      $error = "Incorrect username or password. Please try again.";
+  }
+}
     ?>
 
  

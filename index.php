@@ -68,13 +68,7 @@ if (isset( $_POST['delete'])) {
     ?>
     
         <tr>
-        <td>
-        <?php if (!empty($rows['user_profile_picture'])): ?>
-          <img src="<?php echo htmlspecialchars($rows['user_profile_picture']); ?>" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;">
-        <?php else: ?>
-          <img src="path/to/default/profile/pic.jpg" alt="Default Profile Picture" style="width: 50px; height: 50px; border-radius: 100%;">
-        <?php endif; ?>
-      </td>
+        
           <td><?php echo $counter++?></td>
           <td>
         <?php if (!empty($rows['user_profile_picture'])): ?>
