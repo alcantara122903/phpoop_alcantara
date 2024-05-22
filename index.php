@@ -66,9 +66,7 @@ if (isset( $_POST['delete'])) {
     $data = $con->view();
     foreach ($data as $rows){
     ?>
-    
         <tr>
-        
           <td><?php echo $counter++?></td>
           <td>
         <?php if (!empty($rows['user_profile_picture'])): ?>
@@ -77,12 +75,12 @@ if (isset( $_POST['delete'])) {
           <img src="path/to/default/profile/pic.jpg" alt="Default Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;">
         <?php endif; ?>
       </td>
-          <td> <?php echo $rows ['firstname']; ?> </td>
-          <td> <?php echo $rows ['lastname']; ?></td>
-          <td><?php echo $rows ['birthday']; ?></td>
-          <td><?php echo $rows ['sex']; ?></td>
-          <td><?php echo $rows ['username']; ?></td>
-          <td><?php echo $rows ['address']; ?></td>
+          <td><?php echo $rows ['firstname']; ?> </td>
+          <td><?php echo $rows ['lastname'];  ?></td>
+          <td><?php echo $rows ['birthday'];  ?></td>
+          <td><?php echo $rows ['sex'];       ?></td>
+          <td><?php echo $rows ['username'];  ?></td>
+          <td><?php echo $rows ['address'];   ?></td>
           
           <td>
           <div class="btn-group" role="group">

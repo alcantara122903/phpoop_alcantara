@@ -9,11 +9,11 @@ class database{
 
     // function check($username, $password){
     //     $con = $this->opencon();
-
     //     $query = "SELECT * from users WHERE username='".$username."'&&password='".$password."'                ";
     //     return $con->query($query)->fetch();
     // }
-    function check($username, $password) {
+
+function check($username, $password) {
         // Open database connection
         $con = $this->opencon();
     
@@ -25,7 +25,7 @@ class database{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
         // If a user is found, verify the password
-        if ($user && password_verify($password, $user['user_pass'])) {
+        if ($user && password_verify($password, $user['password'])) {
             return $user;
         }
     
