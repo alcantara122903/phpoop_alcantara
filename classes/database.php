@@ -9,6 +9,7 @@ class database{
 
     function check($username, $password){
         $con = $this->opencon();
+        
         $query = "SELECT * from users WHERE username='".$username."'&&password='".$password."'                ";
         return $con->query($query)->fetch();
     }
