@@ -3,29 +3,31 @@
  require_once('classes/database.php');
  $con=new database();
 session_start();
-if (isset($_SESSION['username'])) {   
-  header('location:index.php');
-} 
  
-
 if (isset($_POST['login'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $result = $con->check($username, $password);
-
-  if ($result) {
+ 
+if($result) {
       $_SESSION['username'] = $result['username'];
-      header('location:index.php');
-  } else {
-      $error = "Incorrect username or password. Please try again.";
+  if ($result['account_type']==0){
+     header('location:index.php');
+  }
+  else if ($result['account_type']==1){
+      header('location:user_account.php');
+  }
+}
+  else{
+$error = "Incorrect username or password ";
   }
 }
 ?>
-
+ 
  
  
 <!DOCTYPE html>
-
+ 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -35,16 +37,16 @@ if (isset($_POST['login'])) {
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  
+ 
 </head>
 <body>
-    
+   
 <div class="container-fluid login-container rounded shadow">
   <h2 class="text-center mb-4">Login</h2>
-
-
-
-  
+ 
+ 
+ 
+ 
   <form method="post">
     <div class="form-group">
       <label for="username">Username:</label>
@@ -67,12 +69,12 @@ if (isset($_POST['login'])) {
   </div>
   </div>
 </div>
-    
+   
   </form>
 </div>
-
-
-
+ 
+ 
+ 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -81,7 +83,4 @@ if (isset($_POST['login'])) {
 <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </body>
 </html>
-
-
  
-
